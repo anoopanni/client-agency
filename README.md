@@ -14,17 +14,21 @@ b.npm installs :
     2. npm install body-parser jsonwebtoken morgan sequelize --save
     3. npm install express --save
 
-c. How to run express.js server; the port is set to 8080 in the code
+c. (OR) How to install project dependencies without doing npm install <package_name> ?
+    1. cd <project dir>
+    2. npm install
+
+d. How to run express.js server; the port is set to 8080 in the code
 
     1. node app.js
 
-d. Install mysql driver to connect to the database from express.js
+e. Install mysql driver to connect to the database from express.js
 
     1. npm install mysql
 
-e. Put the following key-value pair in the header for all subsequent requests after obtaining token : "x-access-token" : "token"
+f. Put the following key-value pair in the header for all subsequent requests after obtaining token : "x-access-token" : "token"
 
-f. Payload for endpoint : http://localhost:8080/api/createagency-client
+g. Payload for endpoint : http://localhost:8080/api/createagency-client
 
     payload : 
     {
@@ -60,7 +64,7 @@ f. Payload for endpoint : http://localhost:8080/api/createagency-client
         Result Client: {"fieldCount":0,"affectedRows":1,"insertId":7,"info":"","serverStatus":2,"warningStatus":0}
         Result Client: {"fieldCount":0,"affectedRows":1,"insertId":8,"info":"","serverStatus":2,"warningStatus":0}
 
-g. payload for endpoint : http://localhost:8080/api/update-client   [client_name is a unique value in the table 'client']; client is a compulsary field. 
+h. payload for endpoint : http://localhost:8080/api/update-client   [client_name is a unique value in the table 'client']; client is a compulsary field. 
 
     payload : {
     "client_name":"abc",
@@ -76,7 +80,7 @@ g. payload for endpoint : http://localhost:8080/api/update-client   [client_name
     Result Client: {"fieldCount":0,"affectedRows":1,"insertId":0,"info":"Rows matched: 1  Changed: 1  Warnings: 0","serverStatus":2,"warningStatus":0,"changedRows":1}
     PATCH /api/update-client 200 4.515 ms - 18
 
-h.  payload for endpoint : http://localhost:8080/api/get-topclien, Get the top client whose total_bill is max. replace limit value in the SQL to get more than one top client details. 
+i.  payload for endpoint : http://localhost:8080/api/get-topclien, Get the top client whose total_bill is max. replace limit value in the SQL to get more than one top client details. 
 
     payload : {
         "client_name": "cn3",
