@@ -1,0 +1,27 @@
+{
+  "name": "client-agency",
+  "version": "1.0.0",
+  "description": "Client Agency Application",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/anoopanni/client-agency.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/anoopanni/client-agency/issues"
+  },
+  "homepage": "https://github.com/anoopanni/client-agency#readme",
+  "dependencies": {
+    "body-parser": "^1.19.1",
+    "express": "^4.17.2",
+    "jsonwebtoken": "^8.5.1",
+    "morgan": "^1.10.0",
+    "mysql2": "^2.3.3",
+    "sequelize": "^6.14.1"
+  }
+}

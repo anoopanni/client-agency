@@ -1,6 +1,4 @@
 var express = require('express');
-
-   
 var users = require('./users.json');  
 var logger = require('morgan');  
 var app = express();  
@@ -14,6 +12,24 @@ var jwt = require('jsonwebtoken');
 app.set('superSecret', "success is inevitable");  
 var router = express.Router();  
 
+
+// mysql connection
+var mysql = require('mysql2');
+
+var con = mysql.createConnection({
+  host: "localhost",
+  user: "root",
+  password: "password",
+  database: "client_agency_schema"
+});
+
+con.connect(function(err) {
+  if (err) throw err;
+  console.log("Connected!");
+});
+
+
+// routers 
 
 router.post('/authenticate', function(req, res) { //this will issue token for valid users  
     var username = req.body.user;  
@@ -94,11 +110,21 @@ router.get('/users', function(req, res) {
    
 });  
 
-router.use(function(req, res, next) {  
-    // do logging  
-    console.log('Something is happening.');  
-    next();  
-});  
+// router.use(function(req, res, next) {  
+//     // do logging  
+//     console.log('Something is happening.');  
+//     next();  
+// });  
+
+
+router.post('/createagency-client', function(req, res) {
+    sql = "INSERT INTO `client_agency_schema`.`Agency` (`agency_name`, `address_1`, `address_2`, `state`, `city`, `phone_number`) VALUES (?, ?, ?, ?, ?, ?)";
+    con.query(sql, [req.body.agency_name, req.body.address_1, req.body.address_2, req.body.state, req.body.city, req.body.phone_number], function (err, result) {
+        if (err) throw err;
+        console.log("Result: " + JSON.stringify(result));
+        res.status(200).send("Request successful");
+      })
+    });
    
 app.use('/api', router);  
    
