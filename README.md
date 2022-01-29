@@ -14,7 +14,7 @@ b.npm installs :
     2. npm install body-parser jsonwebtoken morgan sequelize --save
     3. npm install express --save
 
-c. (OR) How to install project dependencies without doing npm install P{{package_name}} ?
+c. (OR) How to install project dependencies without doing npm install {{package_name}} ?
     1. cd {{project_directory}}
     2. npm install
 
