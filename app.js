@@ -118,13 +118,24 @@ router.get('/users', function(req, res) {
 
 
 router.post('/createagency-client', function(req, res) {
-    sql = "INSERT INTO `client_agency_schema`.`Agency` (`agency_name`, `address_1`, `address_2`, `state`, `city`, `phone_number`) VALUES (?, ?, ?, ?, ?, ?)";
-    con.query(sql, [req.body.agency_name, req.body.address_1, req.body.address_2, req.body.state, req.body.city, req.body.phone_number], function (err, result) {
+    sql = "INSERT INTO `client_agency_schema`.`Agency` (`agency_name`, `address_1`, `address_2`, `state`, `city`, `agency_phone`) VALUES (?, ?, ?, ?, ?, ?)";
+    con.query(sql, [req.body.agency_name, req.body.address_1, req.body.address_2, req.body.state, req.body.city, req.body.agency_phone], function (err, result) {
         if (err) throw err;
-        console.log("Result: " + JSON.stringify(result));
-        res.status(200).send("Request successful");
-      })
-    });
+        console.log("Result Agency: " + JSON.stringify(result));
+        let agency_id = result.insertId;
+
+        for(let client of req.body.clients) {
+        sql = "INSERT INTO `client_agency_schema`.`Client` (`client_name`, `email`, `client_phone`, `total_bill`,`agency_id`) VALUES (?, ?, ?, ?, ?)";
+        con.query(sql, [client.client_name, client.email, client.client_phone, client.total_bill, agency_id], function (err, result) {
+            if (err) throw err;
+            console.log("Result Client: " + JSON.stringify(result));    
+        });
+    }
+      res.status(200).send("Request successful");
+    })
+});
+
+// router.
    
 app.use('/api', router);  
    
