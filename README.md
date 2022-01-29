@@ -26,7 +26,7 @@ e. Install mysql2 driver to connect to the database from express.js
 
     1. npm install mysql2
 
-f. Put the following key-value pair in the header for all subsequent requests after obtaining token : "x-access-token" : "token"
+f. Put the following key-value pair in the header for all subsequent requests after obtaining token : "x-access-token" : {{token}}
 
 g. Payload for endpoint : http://localhost:8080/api/createagency-client
 
