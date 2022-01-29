@@ -60,3 +60,20 @@ f. Payload for endpoint : http://localhost:8080/api/createagency-client
         Result Client: {"fieldCount":0,"affectedRows":1,"insertId":7,"info":"","serverStatus":2,"warningStatus":0}
         Result Client: {"fieldCount":0,"affectedRows":1,"insertId":8,"info":"","serverStatus":2,"warningStatus":0}
 
+g. payload for endpoint : http://localhost:8080/api/update-client   [client_name is a unique value in the table 'client']; client is a compulsary field. 
+
+    payload : {
+    "client_name":"abc",
+    "agency_id":100
+    }
+
+    output examples ; 
+
+    1. sql:UPDATE client_agency_schema.Client SET agency_id=100 WHERE client_name='abc';
+    Result Client: {"fieldCount":0,"affectedRows":0,"insertId":0,"info":"Rows matched: 0  Changed: 0  Warnings: 0","serverStatus":2,"warningStatus":0,"changedRows":0}
+    PATCH /api/update-client 200 19.161 ms - 18
+    2. sql:UPDATE client_agency_schema.Client SET agency_id=100 WHERE client_name='cn';
+    Result Client: {"fieldCount":0,"affectedRows":1,"insertId":0,"info":"Rows matched: 1  Changed: 1  Warnings: 0","serverStatus":2,"warningStatus":0,"changedRows":1}
+    PATCH /api/update-client 200 4.515 ms - 18
+
+h.  

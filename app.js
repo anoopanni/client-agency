@@ -135,7 +135,39 @@ router.post('/createagency-client', function(req, res) {
     })
 });
 
-// router.
+
+// to contruct patch request sql query 
+const buildPatchQuery = (table, client_name, data) => {
+    if (Object.keys(data).length === 0) return null; // Or return what you want
+    let sql = `UPDATE ${table} SET`;
+    Object.entries(data).forEach(([key, value]) => {
+        if (key === "client_name"){
+            return;
+        }
+        const valueToSet = typeof data[key] === 'string' ? `'${value}'` : value;
+        sql += ` ${key}=${valueToSet},`;
+    });
+    sql = sql.slice(0, -1); // Remove last ","
+    sql += ` WHERE client_name='${client_name}';`;
+    return sql;
+}
+
+
+router.patch('/update-client', function(req, res) {
+    let client_to_update = req.body;
+    if (!('key' in client_to_update)) {res.status(404).send("Client is a must parameter");}
+    let sql = buildPatchQuery('client_agency_schema.Client', client_to_update.client_name, client_to_update);
+    console.log("sql:"+ sql);
+    con.query(sql, function (err, result) {
+        if (err) throw err;
+        console.log("Result Client: " + JSON.stringify(result));
+        if (result.affectedRows === 0) {
+            res.status(404).send("Client not found");
+        }
+        res.status(200).send("Request successful");
+        }
+    );
+});
    
 app.use('/api', router);  
    
