@@ -14,8 +14,8 @@ b.npm installs :
     2. npm install body-parser jsonwebtoken morgan sequelize --save
     3. npm install express --save
 
-c. (OR) How to install project dependencies without doing npm install $package_name ?
-    1. cd $project_directory
+c. (OR) How to install project dependencies without doing npm install P{{package_name}} ?
+    1. cd {{project_directory}}
     2. npm install
 
 d. How to run express.js server; the port is set to 8080 in the code
