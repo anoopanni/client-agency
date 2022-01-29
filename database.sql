@@ -29,9 +29,9 @@ CREATE TABLE `Agency` (
   `address_2` varchar(45) DEFAULT NULL,
   `state` varchar(45) DEFAULT NULL,
   `city` varchar(45) DEFAULT NULL,
-  `phone_number` int DEFAULT NULL,
+  `agency_phone` varchar(45) DEFAULT NULL,
   PRIMARY KEY (`agency_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=20 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -46,10 +46,11 @@ CREATE TABLE `client` (
   `agency_id` int DEFAULT NULL,
   `client_name` varchar(45) DEFAULT NULL,
   `email` varchar(45) DEFAULT NULL,
-  `phone_number` int DEFAULT NULL,
+  `client_phone` varchar(45) DEFAULT NULL,
   `total_bill` varchar(45) DEFAULT NULL,
-  PRIMARY KEY (`client_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+  PRIMARY KEY (`client_id`),
+  UNIQUE KEY `client_name_UNIQUE` (`client_name`)
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -61,4 +62,4 @@ CREATE TABLE `client` (
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-01-29 22:38:04
+-- Dump completed on 2022-01-30  1:40:03
