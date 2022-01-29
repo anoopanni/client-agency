@@ -22,9 +22,9 @@ d. How to run express.js server; the port is set to 8080 in the code
 
     1. node app.js
 
-e. Install mysql driver to connect to the database from express.js
+e. Install mysql2 driver to connect to the database from express.js
 
-    1. npm install mysql
+    1. npm install mysql2
 
 f. Put the following key-value pair in the header for all subsequent requests after obtaining token : "x-access-token" : "token"
 
