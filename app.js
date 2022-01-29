@@ -168,6 +168,18 @@ router.patch('/update-client', function(req, res) {
         }
     );
 });
+
+
+router.get('/get-topclient', function(req, res) {
+    sql = "SELECT client_agency_schema.Client.client_name, client_agency_schema.Agency.agency_name, client_agency_schema.Client.total_bill FROM client_agency_schema.Client, client_agency_schema.Agency WHERE client_agency_schema.Client.agency_id = client_agency_schema.Agency.agency_id ORDER BY total_bill DESC LIMIT 1";
+    con.query(sql, function (err, result) {
+        if (err) throw err;
+        console.log("Result Client: " + JSON.stringify(result));
+        res.status(200).send(result);
+        }
+    );
+    });
+
    
 app.use('/api', router);  
    

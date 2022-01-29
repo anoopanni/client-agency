@@ -76,4 +76,15 @@ g. payload for endpoint : http://localhost:8080/api/update-client   [client_name
     Result Client: {"fieldCount":0,"affectedRows":1,"insertId":0,"info":"Rows matched: 1  Changed: 1  Warnings: 0","serverStatus":2,"warningStatus":0,"changedRows":1}
     PATCH /api/update-client 200 4.515 ms - 18
 
-h.  
+h.  payload for endpoint : http://localhost:8080/api/get-topclien, Get the top client whose total_bill is max. replace limit value in the SQL to get more than one top client details. 
+
+    payload : {
+        "client_name": "cn3",
+        "agency_name": "a",
+        "total_bill": "tb3"
+    }
+
+    Result : 
+
+    Result Client: [{"client_name":"cn3","agency_name":"a","total_bill":"tb3"}]
+    GET /api/get-topclient 200 9.115 ms - 60
