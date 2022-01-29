@@ -1,10 +1,13 @@
-var express = require('express'),  
-    bodyParser = require('body-parser');  
+var express = require('express');
+
    
 var users = require('./users.json');  
 var logger = require('morgan');  
 var app = express();  
-app.use(bodyParser());  
+app.use(express.json());
+app.use(express.urlencoded({
+    extended: true
+}));
 app.use(logger('dev'));  
 var port = 8080; //setting port no.  
 var jwt = require('jsonwebtoken');  
